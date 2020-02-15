@@ -22,13 +22,46 @@ app.post("/", function(req, res){
   var trackedName = req.body.trackedName;
   console.log(userName);
   console.log(trackedName);
+  geoFindMe();
+
 });
-app.set('port', process.env.PORT || 3012);
+app.set('port', process.env.PORT || 3018);
 app.listen(app.get('port'), function() {
-  if(app.get('port') == 3012){
-  console.log("Server started on port 3012");
+  if(app.get('port') == 3018){
+  console.log("Server started on port 3018");
 }
 else{
   console.log("Server started on port " + process.env.PORT);
 }
 });
+
+function geoFindMe() {
+  const status = document.querySelector('#status');
+  const mapLink = document.querySelector('#map-link');
+
+  mapLink.href = '';
+  mapLink.textContent = '';
+
+  function success(position) {
+    const latitude  = position.coords.latitude;
+    const longitude = position.coords.longitude;
+
+    status.textContent = '';
+    mapLink.href = `https://www.openstreetmap.org/#map=18/${latitude}/${longitude}`;
+    mapLink.textContent = `Latitude: ${latitude} °, Longitude: ${longitude} °`;
+  }
+
+  function error() {
+    status.textContent = 'Unable to retrieve your location';
+  }
+
+  if (!navigator.geolocation) {
+    status.textContent = 'Geolocation is not supported by your browser';
+  } else {
+    status.textContent = 'Locating…';
+    navigator.geolocation.getCurrentPosition(success, error);
+  }
+
+}
+
+//document.querySelector('#find-me').addEventListener('click', geoFindMe);
