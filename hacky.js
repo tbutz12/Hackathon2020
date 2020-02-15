@@ -23,7 +23,7 @@ app.post("/", function(req, res){
   console.log(userName);
   console.log(trackedName);
 });
-app.set('port', process.env.PORT || 3008);
+app.set('port', process.env.PORT);
 app.listen(app.get('port'), function() {
-  console.log("Server started on port 3008");
+  console.log("Server started on port " + process.env.PORT);
 });
