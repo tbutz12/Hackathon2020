@@ -23,7 +23,12 @@ app.post("/", function(req, res){
   console.log(userName);
   console.log(trackedName);
 });
-app.set('port', process.env.PORT);
+app.set('port', process.env.PORT || 3012);
 app.listen(app.get('port'), function() {
+  if(app.get('port') == 3012){
+  console.log("Server started on port 3012");
+}
+else{
   console.log("Server started on port " + process.env.PORT);
+}
 });
