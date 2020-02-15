@@ -1,1 +1,1 @@
-web: node hacky.js
+web: node --experimental-modules hacky.js
