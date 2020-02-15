@@ -1,0 +1,17 @@
+{
+  "name": "hackathon",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "d",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "julian",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "radar-sdk-js": "^1.1.0"
+  }
+}
